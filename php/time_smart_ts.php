@@ -2,19 +2,19 @@
 
 date_default_timezone_set('Asia/Shanghai');
 
-// demo
-echo smart_time('2017-10-24 00:00:00'), "\n";
-echo smart_time('2017-6-14'), "\n";
+// 示例
+echo time_smart_ts(strtotime('2017-10-24 00:00:00')), "\n";
+echo time_smart_ts(strtotime('2017-6-14')), "\n";
 
 
 /**
  * 把明确时间转化成智能时间（例如：3秒前，5天前）
- * @param  string $str 代表时间的字符串
- * @return string      智能时间（例如：3秒前，5天前）
+ * @param  string   $ts         时间戳
+ * @param  int      $days       超过多少天显示真实日期
+ * @return string               智能时间（例如：3秒前，5天前）
  */
-function smart_time($str, $days = 30)
+function time_smart_ts($ts, $days = 30)
 {
-    $ts = strtotime($str);
     $passed = time() - $ts;
 
     // 未来的时间或超过$days天，显示真是日期
